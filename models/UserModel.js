@@ -16,6 +16,10 @@ const userSchema = new Schema(
     token: {
       type: String,
     },
+    voted: {
+      upvoted: [{ type: Schema.Types.ObjectId, ref: "Streamer" }],
+      downvoted: [{ type: Schema.Types.ObjectId, ref: "Streamer" }],
+    },
   },
   { versionKey: false, timestamps: true }
 );
