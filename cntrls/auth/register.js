@@ -13,7 +13,7 @@ const register = async (req, res, next) => {
 
   const newUser = await User.create({
     ...req.body,
-    password: password,
+    password: hashPassword,
     voted: {
       upvoted: [],
       downvoted: [],
