@@ -1,9 +1,7 @@
-
 const { Streamer } = require("../../models/StreamerModel");
 const { errorCatcher } = require("../../helpers");
 
-const DEF_IMAGE_URL =
-  "https://drive.google.com/file/d/1o6FQcFCT-xQE7Fz7gVpjiXxwrkgpZv96/view?usp=sharing";
+const DEF_IMAGE_URL = "https://i.ibb.co/9qjsqX3/avatar-of-streamer.png";
 
 const addStreamer = async (req, res) => {
   const newStreamer = await Streamer.create({
