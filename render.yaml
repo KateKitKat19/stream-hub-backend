@@ -1,1 +1,1 @@
-buildCommand: npm ci && npm start
+buildCommand: npm i && npm start

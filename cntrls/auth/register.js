@@ -1,6 +1,6 @@
 const { User } = require("../../models/UserModel");
 const { HttpError, errorCatcher } = require("../../helpers");
-// const bcrypt = require("bcryptjs");
+const bcrypt = require("bcrypt");
 const { nanoid } = require("nanoid");
 
 const register = async (req, res, next) => {
@@ -9,7 +9,7 @@ const register = async (req, res, next) => {
   if (registeredEmail) {
     next(HttpError(409, "Email in use"));
   }
-  // const hashPassword = await bcrypt.hash(password, 10);
+  const hashPassword = await bcrypt.hash(password, 10);
 
   const newUser = await User.create({
     ...req.body,
