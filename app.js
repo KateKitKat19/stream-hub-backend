@@ -10,15 +10,15 @@ const authRouter = require("./routes/api/auth");
 const app = express();
 
 const formatsLogger = app.get("env") === "development" ? "dev" : "short";
-const customHeaders = (res) => {
-  res.append("Cross-Origin-Opener-Policy", "same-origin-allow-popups");
-};
+app.use((req, res, next) => {
+  res.header("Cross-Origin-Opener-Policy", "same-origin");
+  next();
+});
 
 app.use(logger(formatsLogger));
 app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-app.use(express.static("public"), { setHeaders: customHeaders });
 
 app.use("/api/auth", authRouter);
 app.use("/api/streamers", streamersRouter);
