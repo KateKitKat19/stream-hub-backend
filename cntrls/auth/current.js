@@ -7,7 +7,6 @@ const getCurrent = async (req, res, next) => {
     res.status(201).json({
       status: 201,
       user: { name: user.name, email: user.email },
-      token: token,
     });
   } else {
     next(HttpError(400, "Validation error"));
