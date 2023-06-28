@@ -2,16 +2,11 @@ const { User } = require("../../models/UserModel");
 const { HttpError, errorCatcher } = require("../../helpers");
 
 const getCurrent = async (req, res, next) => {
-    const { token } = req.body;
-    if (!token) {
-      next(HttpError(401));
-    }
-  const isCurrent = await User.findOne({ token });
-
-  if (isCurrent) {
+  const user = req.user;
+  if (user) {
     res.status(201).json({
       status: 201,
-      user: { name: isCurrent.name, email: isCurrent.email },
+      user: { name: user.name, email: user.email },
       token: token,
     });
   } else {
