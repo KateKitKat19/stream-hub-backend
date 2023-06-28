@@ -8,6 +8,6 @@ const authentificate = require("../../middlewars/authentificate");
 router.post("/registration", validateBody(registerSchema), register);
 router.post("/login", validateBody(signinSchema), login);
 router.post("/logout", authentificate, logout);
-router.get("/getCurrent", authentificate, getCurrent);
+router.get("/getCurrent", getCurrent);
 
 module.exports = router;
