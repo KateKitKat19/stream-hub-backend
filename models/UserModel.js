@@ -34,7 +34,6 @@ const registerSchema = Joi.object({
   name: Joi.string()
     .required()
     .min(3)
-    .max(20)
     .error((errors) => {
       errors.forEach((err) => {
         switch (err.code) {
@@ -43,9 +42,6 @@ const registerSchema = Joi.object({
             break;
           case "string.min":
             err.message = `Name should have at least ${err.local.limit} characters!`;
-            break;
-          case "string.max":
-            err.message = `Name should have at most ${err.local.limit} characters!`;
             break;
           default:
             break;
@@ -56,7 +52,6 @@ const registerSchema = Joi.object({
   password: Joi.string()
     .required()
     .min(5)
-    .max(14)
     .error((errors) => {
       errors.forEach((err) => {
         switch (err.code) {
@@ -65,9 +60,6 @@ const registerSchema = Joi.object({
             break;
           case "string.min":
             err.message = `Name should have at least ${err.local.limit} characters!`;
-            break;
-          case "string.max":
-            err.message = `Name should have at most ${err.local.limit} characters!`;
             break;
           default:
             break;
@@ -97,7 +89,7 @@ const registerSchema = Joi.object({
 
 const signinSchema = Joi.object({
   email: Joi.string().required().email(),
-  password: Joi.string().min(5).max(14).required(),
+  password: Joi.string().min(5).required(),
 });
 
 const User = model("users", userSchema);
