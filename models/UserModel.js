@@ -59,7 +59,7 @@ const registerSchema = Joi.object({
             err.message = `Missing required password field`;
             break;
           case "string.min":
-            err.message = `Name should have at least ${err.local.limit} characters!`;
+            err.message = `Password should have at least ${err.local.limit} characters!`;
             break;
           default:
             break;
