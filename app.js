@@ -11,7 +11,7 @@ const app = express();
 
 const formatsLogger = app.get("env") === "development" ? "dev" : "short";
 app.use((req, res, next) => {
-  res.header("Cross-Origin-Opener-Policy", "same-origin");
+  res.header("Cross-Origin-Opener-Policy", "same-origin-allow-popups");
   next();
 });
 
